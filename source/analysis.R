@@ -121,7 +121,7 @@ get_state_jail_pop <- function() {
   return(state_jail_pop)   
 }
 
-plot_jail_pop_for_us <- function(states)  {
+plot_jail_pop_for_us_state <- function(states)  {
   chart2 <- ggplot(data = get_state_jail_pop(), 
                              aes(x = year, y = selected_pop, group = state)) +
                              geom_line(aes(color = state)) +
