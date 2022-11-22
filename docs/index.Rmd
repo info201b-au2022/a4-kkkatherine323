@@ -5,7 +5,7 @@ date: '2022-11-20'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 source("~/Documents/info201/assignments/a4-kkkatherine323/source/analysis.R")
 source("~/Documents/info201/assignments/a4-kkkatherine323/source/a4-helpers.R")
 ```
@@ -55,7 +55,7 @@ The linear statistical chart shows an overall upward trend in the female incarce
 
 ## Map: Female Prison Population by State
 
-```{r fig.cap="Figure 4. A map shows the female prison population (1970-2018) by state in U.S.", echo=FALSE, eval=TRUE, message=FALSE}
+```{r fig.cap="Figure 4. A map shows the female prison population (1970-2018) by state in U.S.", echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 plot_usmap(data = female_jail_pop_state, values = "female_pop", color = "black") + 
            scale_fill_continuous(low = "white", high = "red", 
                                  name = "Female prison population by state (1970-2018)", 
