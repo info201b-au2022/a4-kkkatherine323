@@ -180,7 +180,7 @@ female_jail_pop_state <- incarceration_trends %>%
 
 plot_usmap(data = female_jail_pop_state, values = "female_pop", color = "black") + 
            scale_fill_continuous(low = "white", high = "red", 
-                                 name = "State Black Jail Population (1970-2018)", 
+                                 name = "Female prison population by state (1970-2018)", 
                                  label = scales::comma) + 
                                  theme(legend.position = "right")
 
