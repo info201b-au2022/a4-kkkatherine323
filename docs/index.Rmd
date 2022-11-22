@@ -1,45 +1,70 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Inequality among prisoners in the US"
+author: "Xiaotong Zhang"
+date: '2022-11-20'
 output: html_document
 ---
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE}
-source("../source/a4-helpers.R")
-source("../source/analysis.R")
+source("~/Documents/info201/assignments/a4-kkkatherine323/source/analysis.R")
+source("~/Documents/info201/assignments/a4-kkkatherine323/source/a4-helpers.R")
 ```
 
-## Abstract 
-[TODO: Include a short abstract (about 50 words)]
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
+## Abstract
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
+This report analyses trends in the US prison population since 1970 and looks at whether there are inequalities in the US prison system in terms of the number of prisoners incarcerated.
 
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
 
 ## Introduction 
-[TODO]
+
+This assignment shows some of the inequalities among inmates in prison based on the details that researchers at the Vera Institute have tallied about prison admissions in the United States from 1970 to 2018. Through the dataset, I found that the US prison system is shaped by a power matrix and that there are inequalities that hurt minority groups. Such a system is not conducive to protecting the safety and power of minorities, and it is impossible to imagine how many families and citizens' well-being are affected by an unfair data system. The direct stakeholders in this dataset are the researchers who built it, as well as the individuals in society who are using this dataset for independent analysis projects or the government personnel who are using it to understand prison data. The profile stakeholders are incarcerated prisoners and their families, and possibly officials from the US Department of Justice or state governments. This data is important to every US citizen and to the government's statistics on the prison system. Therefore these data need to be fair, accurate and transparent. The questions I will answer in this report are:
+ - Is there a national and state gender bias regarding inmates in prison.
+ - Whether there is a national and state bias against prisoners in prison in terms of ethnicity, particularly against black people.
+ - The growth of the U.S. prison population since 1970, nationally and by state.
+
 
 ## Data Summary 
-[TODO]
 
-[TODO ... other sections ... See Canvas for details]
+Using the dataset, it can be seen that the entire US prison population from 1970 onwards is **`r total_jail_population`**, while the black population in prisons is **`r total_black_jail_population`**. This is not a small number, and further calculations reveal that the state with the highest ratio of white to black prison population is **`r state_highest_jail_race_ratio`**, suggesting that prisons with **`r state_highest_jail_race_ratio`** are most likely to have ethnic inequalities regarding prisoners, especially for the black race. Gender inequality is another big issue, also in relation to patterns of inequality in prisons. Since 1970, the female inmate population in all US prisons has been **`r total_female_jail_population`**. And the state with the highest ratio of male to female prison population is **`r state_highest_jail_sex_ratio`**, suggesting that prison systems with **`r state_highest_jail_sex_ratio`** may be at risk of mistreating vulnerable groups of women. The prison system should improve the protection of vulnerable groups and reform inadequate systems.
 
-_All the very best with your work!_
+
+## Chart1: Growth of the U.S. Prison Population 
+```{r fig.cap= "Figure 1. Increase of Jail Population in U.S. (1970-2018).", echo=FALSE, eval=TRUE, message=FALSE}
+plot_jail_pop_for_us()
+```
+
+### What has been the trend in the increase in the prison population in the United States since 1970?
+This bar graph shows that there has been a significant overall increase in the prison population in the US since 1970. the prison population remained largely stable at around 200,000 between 1970 and 1980 and began to grow significantly after 1980. The prison population reached a peak of almost 800,000 around 2008.
+
+## Chart2: Growth of Prison Population by State
+```{r fig.cap= "Figure 2. Increase of Jail Population in U.S. (1970-2018) in CA, DC, FL, and WA.", echo=FALSE, eval=TRUE, message=FALSE}
+plot_jail_pop_for_us_state()
+```
+
+### What has been the trend in the growth of the prison population in these selected states in the United States since 1970?
+Of the four states selected, the growth trends in all but DC are upward overall. Of these, CA has the strongest growth trend and has the largest prison population. the growth trend in DC since 1970 has been insignificant and has remained largely parallel.
+
+## Chart3: Growth of Female Incarcerated Population by State
+```{r fig.cap="Figure 3. Distribution of female prison population (1970-2018) by state.", echo=FALSE, eval=TRUE, message=FALSE}
+plot_female_pop_by_state()
+```
+
+### What are the trends in the growth of female incarceration by the state in the US since 1970?
+The linear statistical chart shows an overall upward trend in the female incarceration population in the US states since 1970. The most significant increases are in California and Texas, for example. Overall, the female incarceration population reached its first peak around 1995 and its second peak around 2008 across the United States.
+
+## Map: Female Prison Population by State
+
+```{r fig.cap="Figure 4. A map shows the female prison population (1970-2018) by state in U.S.", echo=FALSE, eval=TRUE, message=FALSE}
+plot_usmap(data = female_jail_pop_state, values = "female_pop", color = "black") + 
+           scale_fill_continuous(low = "white", high = "red", 
+                                 name = "Female prison population by state (1970-2018)", 
+                                 label = scales::comma) + 
+                                 theme(legend.position = "right")
+
+```
+
+
+### Which US states have the highest female incarceration populations?
+The map shows that the states with the highest female incarceration populations are California, Texas, and Florida. Some states in the north-central and northeastern regions of the United States have the lowest female incarceration populations, such as Montana, North Dakota, South Dakota, and Maine. It is worth noting that densely populated areas such as New York do not have the highest female prison populations, so it is possible that states with high female prison populations such as California, Texas and Florida may have unequal prison systems, regardless of population density.
 
