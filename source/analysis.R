@@ -3,7 +3,7 @@ library(dplyr)
 library(ggplot2)
 
 incarceration_trends <- read.csv("https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv")
-View(incarceration_trends)
+#View(incarceration_trends)
 
 # The functions might be useful for A4
 source("../source/a4-helpers.R")
